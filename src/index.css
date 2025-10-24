@@ -1,0 +1,476 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Portfolio Design System - Dark theme with vibrant accents */
+
+@layer base {
+  :root {
+    /* Core Colors - Dark Theme */
+    --background: 222 20% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 20% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 20% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Brand Colors - Electric Blue/Purple Gradient */
+    --primary: 249 75% 65%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 249 85% 75%;
+
+    --secondary: 261 83% 58%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 20% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 249 75% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 20% 20%;
+    --input: 222 20% 15%;
+    --ring: 249 75% 65%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(249, 75%, 65%), hsl(261, 83%, 58%));
+    --gradient-card: linear-gradient(135deg, hsl(222, 20%, 12%) 0%, hsl(222, 20%, 15%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(222, 20%, 8%) 0%, hsl(222, 25%, 12%) 50%, hsl(222, 20%, 8%) 100%);
+
+    /* Glass Effects */
+    --glass-bg: hsla(222, 20%, 12%, 0.8);
+    --glass-border: hsla(249, 75%, 65%, 0.2);
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsla(249, 75%, 65%, 0.3);
+    --shadow-card: 0 8px 32px hsla(222, 20%, 4%, 0.4);
+    --shadow-elevated: 0 20px 60px hsla(222, 20%, 4%, 0.6);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+}
+
+/* Custom Animations */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: hsl(var(--primary)); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-30px) rotate(120deg); }
+  66% { transform: translateY(-10px) rotate(240deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-hero);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glass Card Component */
+  .glass-card {
+    @apply backdrop-blur-md border rounded-xl;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glowing Button */
+  .btn-glow {
+    @apply relative overflow-hidden rounded-lg px-6 py-3 font-semibold transition-all duration-300;
+    background: var(--gradient-primary);
+    box-shadow: 0 4px 15px hsla(249, 75%, 65%, 0.4);
+  }
+  
+  .btn-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Mobile Responsive Button */
+  @media (max-width: 640px) {
+    .btn-glow {
+      @apply px-4 py-2 text-sm;
+    }
+  }
+
+  /* Typewriter Effect */
+  .typewriter {
+    overflow: hidden;
+    border-right: 0.15em solid hsl(var(--primary));
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typewriter 3.5s steps(40, end), blink 0.75s step-end infinite;
+  }
+
+  /* Mobile Typewriter */
+  @media (max-width: 768px) {
+    .typewriter {
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      white-space: normal;
+      word-break: break-word;
+    }
+  }
+
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Particle Background */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particle-float 20s linear infinite;
+  }
+
+  /* Mobile Particle Optimization */
+  @media (max-width: 768px) {
+    .particle {
+      display: none; /* Hide particles on mobile for performance */
+    }
+  }
+
+  /* Skill Progress */
+  .skill-progress {
+    @apply relative w-full h-2 bg-muted rounded-full overflow-hidden;
+  }
+  
+  .skill-progress::after {
+    content: '';
+    @apply absolute top-0 left-0 h-full rounded-full;
+    background: var(--gradient-primary);
+    width: var(--progress-width, 0%);
+    transition: width 1s ease-out;
+  }
+
+  /* Mobile Container Improvements */
+/* Certificate specific media queries */
+@media (max-width: 640px) {
+  .certificate-grid {
+    @apply grid-cols-1 gap-3;
+  }
+  
+  .certificate-card {
+    @apply text-sm;
+  }
+  
+  .certificate-image {
+    @apply aspect-[3/2];
+  }
+  
+  .certificate-stats {
+    @apply grid-cols-2 gap-3 text-xs;
+  }
+  
+  .certificate-badge {
+    @apply text-xs px-2 py-1;
+  }
+  
+  .certificate-modal {
+    @apply max-w-[95vw] max-h-[90vh] overflow-y-auto;
+  }
+  
+  .certificate-title {
+    @apply text-lg leading-tight;
+  }
+  
+  .certificate-actions {
+    @apply flex-col gap-2;
+  }
+  
+  .certificate-actions .btn {
+    @apply w-full text-sm py-2 px-3;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .certificate-grid {
+    @apply grid-cols-2 gap-4;
+  }
+  
+  .certificate-image {
+    @apply aspect-[4/3];
+  }
+  
+  .certificate-stats {
+    @apply grid-cols-4 gap-4;
+  }
+}
+
+@media (min-width: 769px) {
+  .certificate-grid {
+    @apply grid-cols-3 gap-6;
+  }
+  
+  .certificate-image {
+    @apply aspect-[4/3];
+  }
+  
+  .certificate-stats {
+    @apply grid-cols-4 gap-6;
+  }
+}
+
+/* Certificate animation enhancements */
+.certificate-card {
+  @apply transition-all duration-300 ease-out;
+}
+
+.certificate-card:hover {
+  @apply scale-[1.02] shadow-2xl;
+}
+
+.certificate-expandable {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+.certificate-expanded {
+  @apply max-h-96;
+}
+
+.certificate-collapsed {
+  @apply max-h-24 overflow-hidden;
+}
+
+@media (max-width: 640px) {
+    .container {
+      @apply px-3;
+    }
+    
+    /* Reduce spacing on mobile */
+    .py-16 {
+      @apply py-8;
+    }
+    
+    .py-20 {
+      @apply py-12;
+    }
+    
+    .mb-16 {
+      @apply mb-8;
+    }
+    
+    .mb-12 {
+      @apply mb-6;
+    }
+  }
+
+  /* Mobile Cards */
+  @media (max-width: 768px) {
+    .glass-card {
+      @apply mx-2;
+    }
+  }
+
+  /* Mobile Grid Improvements */
+  @media (max-width: 640px) {
+    .grid-cols-2 {
+      @apply grid-cols-1;
+    }
+    
+    .md\:grid-cols-2 {
+      @apply grid-cols-1;
+    }
+    
+    .lg\:grid-cols-3 {
+      @apply grid-cols-1;
+    }
+  }
+
+  /* Touch-friendly Interactive Elements */
+  @media (max-width: 768px) {
+    button, .cursor-pointer {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Projects Page Mobile */
+  @media (max-width: 640px) {
+    .project-grid {
+      @apply grid-cols-1 gap-4;
+    }
+    
+    .project-card {
+      @apply mx-0;
+    }
+    
+    .project-actions {
+      @apply flex-col gap-2;
+    }
+    
+    .project-badge {
+      @apply text-xs;
+    }
+  }
+
+  /* Skills Page Mobile */
+  @media (max-width: 640px) {
+    .skill-card {
+      @apply text-sm;
+    }
+    
+    .skill-grid {
+      @apply grid-cols-1 gap-4;
+    }
+    
+    .skill-icon {
+      @apply w-12 h-12;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 768px) {
+    .skill-grid {
+      @apply grid-cols-2 gap-4;
+    }
+  }
+
+  /* About Page Mobile */
+  @media (max-width: 640px) {
+    .about-header {
+      @apply text-2xl mb-4;
+    }
+    
+    .experience-card, .education-card {
+      @apply text-sm;
+    }
+    
+    .interests-grid {
+      @apply grid-cols-2 gap-3;
+    }
+  }
+
+  /* Contact Page Mobile */
+  @media (max-width: 640px) {
+    .contact-form {
+      @apply space-y-4;
+    }
+    
+    .contact-grid {
+      @apply grid-cols-1 gap-4;
+    }
+    
+    .social-grid {
+      @apply grid-cols-2 gap-3;
+    }
+    
+    .contact-card {
+      @apply p-3;
+    }
+  }
+
+  /* Typography Mobile */
+  @media (max-width: 640px) {
+    h1 {
+      @apply text-2xl;
+    }
+    
+    h2 {
+      @apply text-xl;
+    }
+    
+    h3 {
+      @apply text-lg;
+    }
+    
+    .gradient-text {
+      @apply text-2xl;
+    }
+  }
+
+  /* Navbar Mobile */
+  @media (max-width: 768px) {
+    .navbar-links {
+      @apply flex-wrap justify-center gap-2;
+    }
+    
+    .navbar-link {
+      @apply text-sm px-3 py-2;
+    }
+  }
+
+  /* Modal Mobile */
+  @media (max-width: 640px) {
+    .modal-content {
+      @apply max-w-[95vw] max-h-[90vh] overflow-y-auto p-4;
+    }
+    
+    .modal-title {
+      @apply text-lg;
+    }
+    
+    .modal-actions {
+      @apply flex-col gap-2;
+    }
+  }
+
+  /* Card Mobile Improvements */
+  @media (max-width: 640px) {
+    .glass-card {
+      @apply p-4;
+    }
+    
+    .card-header {
+      @apply p-4;
+    }
+    
+    .card-content {
+      @apply p-4;
+    }
+  }
+
+  /* Button Mobile */
+  @media (max-width: 640px) {
+    .btn-glow {
+      @apply w-full;
+    }
+  }
+}
