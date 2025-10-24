@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+🌐 Portfolio Website
 
-## Project info
+#🧠 Overview
 
-**URL**: https://lovable.dev/projects/ff0993b2-911d-4210-8294-3eaa7e60f622
+A personal portfolio website designed to showcase your projects, skills, and achievements. It provides an interactive and responsive interface to highlight your professional journey and connect with potential employers or collaborators.
 
-## How can I edit this code?
+#✨ Features
 
-There are several ways of editing your application.
+💼 Showcases personal projects and achievements
 
-**Use Lovable**
+🧑‍💻 Displays skills, education, and experience sections
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ff0993b2-911d-4210-8294-3eaa7e60f622) and start prompting.
+📨 Integrated contact form for easy communication
 
-Changes made via Lovable will be committed automatically to this repo.
+📱 Fully responsive design for all devices
 
-**Use your preferred IDE**
+🌙 Light/Dark mode toggle for better user experience
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+#🧰 Technologies Used
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+HTML / CSS / JavaScript
 
-# Step 3: Install the necessary dependencies.
-npm i
+React.js / Vite
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+TypeScript
 
-**Edit a file directly in GitHub**
+Tailwind CSS
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+shadcn/ui
 
-**Use GitHub Codespaces**
+Framer Motion (for animations)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+EmailJS / Formspree (for contact form integration)
 
-## What technologies are used for this project?
 
-This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+#⚙️ How It Works
 
-Simply open [Lovable](https://lovable.dev/projects/ff0993b2-911d-4210-8294-3eaa7e60f622) and click on Share -> Publish.
+1. Home Section — Provides a quick introduction with name, title, and call-to-action buttons.
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
+2. About Section — Displays personal details and professional summary.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+3. Projects Section — Lists and showcases portfolio projects with live demos and GitHub links.
+
+
+4. Skills Section — Displays categorized skills and tools used.
+
+
+5. Contact Section — Allows visitors to send messages directly.
+
+
+
+
+---
+
+#🚀 Deployment
+
+Hosted using Netlify, Vercel, or any preferred cloud platform.
+
+Supports continuous deployment through GitHub integration.
+
+
+#🚀 Deployment link
+link= https://sivansakthi007.github.io/Portfolio-Website/
+
+---
+
+#📈 Future Enhancements
+
+Add a blog section with Markdown support
+
+Include a testimonials section
+
+Integrate Google Analytics for visitor tracer
