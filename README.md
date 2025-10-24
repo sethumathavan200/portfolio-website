@@ -69,7 +69,7 @@ Supports continuous deployment through GitHub integration.
 
 
 #🚀 Deployment link
-link= https://sivansakthi007.github.io/Portfolio-Website/
+link=  https://sethumathavan200.github.io/portfolio-website/
 
 ---
 
